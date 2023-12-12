@@ -14,8 +14,15 @@ const controller = {
 
 	// Detail - Detail from one product
 	detail: (req, res) => {
-		// Do the magic
-	},
+	const {id} = req.params
+	const product = products.find(producto => producto.id == id)
+
+	const dtoReal = product.price * product.discount / 100
+
+	const finalPrice = product.price - dtoReal
+	
+	res.render('detail',{product, finalPrice})
+},
 
 	// Create - Form to create
 	create: (req, res) => {
