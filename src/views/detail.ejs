@@ -17,7 +17,7 @@
 		<div class="product-detail">
 			<div class="row">
 				<div class="col-12 col-lg-8">
-					<img src="/images/products/<%= product.image %>" alt="product image" class="product-detail-img">
+					<img src="/images/products/<%= product.image %>" alt="<%= product.name %>" class="product-detail-img">
 					<p class="product-detail-description">
 						<%= product.description %>
 					</p>
@@ -25,18 +25,23 @@
 				<div class="col-12 col-lg-4">
 					<article class="product-detail-info">
 						<h2 class="product-detail-title"><%= product.name %></h2>
-						
+						<% if(product.discount > 0) { %>
 							<p class="product-detail-price small">
 								<span>$<%= product.price %></span>
 								/
-								<b><%= product.discount %>% OFF</b>
+								<b><%= product.discount > 0 ? product.discount + "% OFF" : null %></b>
 							</p>
+							
 							<p class="product-detail-price">
-								$(<%= finalPrice %>)
+								$<%= product.price - ((product.price * product.discount) / 100) %>
 							</p>
+							<% } else { %>
 							<p class="product-detail-price">
 								$<%= product.price %>
 							</p>
+							<% } %>
+							
+							
 
 						<ul class="actions-list">
 							<li>
@@ -49,7 +54,7 @@
 							</li>
 						</ul>
 
-						<a href="#" class="buy-now-button">COMPRAR AHORA</a>
+						<a href="/" class="buy-now-button">COMPRAR AHORA</a>
 						<hr>
 
 						<a href="/products/edit/<%= product.id %>" class="action-button edit">EDITAR PRODUCTO</a>
