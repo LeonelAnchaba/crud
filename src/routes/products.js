@@ -22,7 +22,7 @@ router.put('/update/:id', update);
 
 
 /*** DELETE ONE PRODUCT***/ 
-router.delete('/delete/:id', destroy); 
+// router.delete('/delete/:id', destroy); 
 
 
 module.exports = router;
