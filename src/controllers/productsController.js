@@ -9,19 +9,15 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 const controller = {
 	// Root - Show all products
 	index: (req, res) => {
-		res.render('products',{products})
+		res.render('products',{products, toThousand})
 	},
 
 	// Detail - Detail from one product
 	detail: (req, res) => {
-	const {id} = req.params
+	const {id} = req.params	
 	const product = products.find(producto => producto.id == id)
 
-	const dtoReal = product.price * product.discount / 100
-
-	const finalPrice = product.price - dtoReal
-	
-	res.render('detail',{product, finalPrice})
+	res.render('detail',{product, toThousand})
 },
 
 	// Create - Form to create
@@ -36,9 +32,10 @@ const controller = {
 
 	// Update - Form to edit
 	edit: (req, res) => {
-		const {id} = req.params
-		const product = products.find(producto => producto.id == id)
-		res.render('product-edit-form',{product})
+		 const {id} = req.params
+		 const product = products.find(producto => producto.id == id)
+		 res.render('product-edit-form',{product})
+
 	},
 	// Update - Method to update
 	update: (req, res) => {

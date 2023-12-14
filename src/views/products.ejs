@@ -22,7 +22,7 @@
 							<img src="/images/products/<%= products.image %>" alt="imagen de producto">
 						</figure>
 						<article class="product-box_data">
-							<h2>$<%= products.price %></h2>
+							<h2>$<%= toThousand(products.price) %></h2>
 							<span><%= products.discount %>% OFF</span>
 							<p><%= products.name %></p>
 							<i class="fas fa-truck"></i>
