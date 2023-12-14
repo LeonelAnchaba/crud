@@ -9,11 +9,12 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 const controller = {
 	index: (req, res) => {
 
-		res.render('index',{products})
+		res.render('index',{products, toThousand})
 	},
 	search: (req, res) => {
-		// Do the magic
-	},
-};
+		const {keywords} = req.query;
+		res.render('results',{products, toThousand, keywords})
+	 }
+	}
 
 module.exports = controller;
