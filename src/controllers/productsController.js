@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
+const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 const getJson = ()=>{
 	const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
@@ -29,13 +30,38 @@ const controller = {
 
 	// Create - Form to create
 	create: (req, res) => {
-		// Do the magic
+		res.render("product-create-form")
 	},
 	
 	// Create -  Method to store
 	store: (req, res) => {
-		// Do the magic
-	},
+        
+       
+        const archivoJson = getJson("productsDataBase")
+        const id = archivoJson[archivoJson.length-1].id + 1
+
+        const {name, price, discount, category, description} = req.body
+
+        let newObjeto = {
+            id,
+            name,
+            price: +price,
+            discount: +discount,
+            category,
+			description,
+			image: "default-image.png"
+		
+        } 
+
+        let newArchivo = [...archivoJson, newObjeto]
+		const guardarArchivo = (newArray, nameFile)=> {
+			const pathFile = path.join(__dirname,  "../data/productsDataBase.json")
+			let datosJson = JSON.stringify(newArray) 
+			fs.writeFileSync(pathFile, datosJson, "utf-8")
+		}
+        guardarArchivo(newArchivo, "productsDataBase")
+        res.redirect("/products")
+    },
 
 	// Update - Form to edit
 	edit: (req, res) => {
@@ -71,12 +97,17 @@ const controller = {
 
 	// Delete - Delete one product from DB
 	// destroy : (req, res) => {
-	// 	const {id} = req.params;
-	// 	const products = get.Json("products");
-	// 	const newArrayProducts = products.filter(producto => producto.id != id);
-	// 	setJson = (newArrayProducts, "products")
-	// 	res.redirect(`products/dashboard/${id}`) 
+    //    const {id} = req.params;
+    //    const products = getJson("productsDataBase");
+    //    const newArrayProducts = products.filter(producto => producto.id != id);
+    //    console.log("newArrayProducts",newArrayProducts);
+	//    const setJson = (array,fileName) => {
+	// 	const json = JSON.stringify(array);
+	// 	fs.writeFileSync(`${__dirname}/../data/${fileName}.json`,json,"utf-8")
 	// }
+    //    setJson(newArrayProducts,"productsDataBase");
+    //    res.redirect("/products");
+    //  },
 };
 
 module.exports = controller;

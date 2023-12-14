@@ -10,7 +10,7 @@ router.get('/', index);
 
 /*** CREATE ONE PRODUCT ***/ 
 router.get('/create', create); 
-router.post('/store', store); 
+router.post('/', store); 
 
 
 /*** GET ONE PRODUCT ***/ 
