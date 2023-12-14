@@ -14,15 +14,15 @@ router.post('/', store);
 
 
 /*** GET ONE PRODUCT ***/ 
-router.get('/detail/:id', detail); 
+router.get('/:id', detail); 
 
 /*** EDIT ONE PRODUCT ***/ 
 router.get('/edit/:id', edit); 
-router.put('/update/:id', update); 
+router.put('/:id', update); 
 
 
 /*** DELETE ONE PRODUCT***/ 
-// router.delete('/delete/:id', destroy); 
+router.delete('/:id', destroy); 
 
 
 module.exports = router;

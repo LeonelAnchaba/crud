@@ -92,22 +92,14 @@ const controller = {
 		})
 		const json = JSON.stringify(nuevoArray)
 		fs.writeFileSync(productsFilePath, json, "utf-8")
-		res.redirect(`/products/detail/${id}`)
+		res.redirect(`/products`)
 	},
 
 	// Delete - Delete one product from DB
-	// destroy : (req, res) => {
-    //    const {id} = req.params;
-    //    const products = getJson("productsDataBase");
-    //    const newArrayProducts = products.filter(producto => producto.id != id);
-    //    console.log("newArrayProducts",newArrayProducts);
-	//    const setJson = (array,fileName) => {
-	// 	const json = JSON.stringify(array);
-	// 	fs.writeFileSync(`${__dirname}/../data/${fileName}.json`,json,"utf-8")
-	// }
-    //    setJson(newArrayProducts,"productsDataBase");
-    //    res.redirect("/products");
-    //  },
+	 destroy : (req, res) => {
+		res.send("Producto borrado correctamente")
+	
+      },
 };
 
 module.exports = controller;
