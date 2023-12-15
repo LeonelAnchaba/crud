@@ -22,8 +22,8 @@
 							<img src="/images/products/<%= products.image %>" alt="imagen de producto">
 						</figure>
 						<article class="product-box_data">
-							<h2>$<%= toThousand(products.price) %></h2>
-							<span><%= products.discount %>% OFF</span>
+							<h2>$<%= toThousand(products.price - ((products.price * products.discount) / 100)) %></h2>
+							<span><%= products.discount > 0 ? products.discount + "% OFF" : null %></span>
 							<p><%= products.name %></p>
 							<i class="fas fa-truck"></i>
 						</article>
