@@ -1,10 +1,9 @@
-const {setJson,getJson} = require("../utility/jsonMethod");
+const {getJson} = require("../utility/jsonMethod");
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 const controller = {
 	index: (req, res) => {
-
 		res.render('index',{products:getJson("productsDataBase"), toThousand})
 	},
 	search: (req, res) => {
