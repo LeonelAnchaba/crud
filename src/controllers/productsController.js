@@ -78,7 +78,18 @@ const controller = {
 
   // Delete - Delete one product from DB
   destroy: (req, res) => {
-    res.send("Producto borrado correctamente")
+	const {id}= req.params;
+    const archivoJson = getJson("productsDataBase");
+
+    const productosRestantes = archivoJson.filter(product => product.id != id);
+
+    setJson(productosRestantes, "productsDataBase");
+    res.redirect("/products");
+
+    // let productsModify = getJson("productsDataBase").filter(product => product.id !== +req.params.id)
+    // storeProducts(productsModify)
+    // return res.redirect("/products")
+    // res.send("Producto borrado correctamente")
   },
 };
 
