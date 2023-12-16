@@ -17,30 +17,33 @@
 			<div class="col-12">
 				<h2 class="products-title">Resultados de la búsqueda: <%= keywords %></h2>
 			</div>
-			<% if (keywords.toLowerCase() == "notebook") { %>
+			<% products.forEach(element => { %>
+			 
+			<% if (element.name.toLowerCase().includes(keywords.toLowerCase())) { %>
 
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">						
-						<a href="/products/detail/<%= products[1].id %>">
+						<a href="/products/detail/<%= element.id %>">
 							<figure class="product-box_image">
-								<img src="/images/products/<%= products[1].image %>" alt="imagen de producto">
+								<img src="/images/products/<%= element.image %>" alt="imagen de producto">
 							</figure>
 							<article class="product-box_data">
-								<h2>$<%= products[1].price - ((products[1].price * products[1].discount) / 100) %></h2>
-								<span><%= products[1].discount > 0 ? products[1].discount + "% OFF" : null %></span>
-								<p><%= products[1].name %></p>
+								<h2>$<%= element.price - ((element.price * element.discount) / 100) %></h2>
+								<span><%= element.discount > 0 ? element.discount + "% OFF" : null %></span>
+								<p><%= element.name %></p>
 								<i class="fas fa-truck"></i>
 							</article>
 						</a>
 					</section>
 				</div>
-
+				
 				<% } else { %>
 			<div class="col-12">
 				<h2 class="products-title" style="color: tomato;">No hay productos que coincidan con esa búsqueda</h2>
 			</div>
 			
 			<% } %>
+			<% }) %>
 		</div>
 	</div>
 	<!-- /todos los productos -->

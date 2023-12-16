@@ -8,6 +8,8 @@ const controller = {
 	},
 	search: (req, res) => {
 		const {keywords} = req.query;
+		console.log(keywords)
+		
 		res.render('results',{products:getJson("productsDataBase"), toThousand, keywords})
 	 }
 	}
