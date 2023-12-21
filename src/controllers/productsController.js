@@ -27,23 +27,32 @@ const controller = {
 
   // Create -  Method to store
   store: (req, res) => {
-    const archivoJson = getJson("productsDataBase");
-    const id = archivoJson[archivoJson.length - 1].id + 1;
-
-    const { name, price, discount, category, description } = req.body;
-
-    let newObjeto = {
-      id,
-      name,
-      price: +price,
-      discount: +discount,
-      category,
-      description,
-      image: "default-image.png",
-    };
-    let newArchivo = [...archivoJson, newObjeto];
-    setJson(newArchivo, "productsDataBase");
-    res.redirect("/products");
+      const file = req.file
+      const archivoJson = getJson("productsDataBase");
+      const id = archivoJson[archivoJson.length - 1].id + 1;
+     
+  
+      const { name, price, discount, category, description} = req.body;
+      // if(!file) {
+      //   const error = new Error("Por favor seleccione un archivo")
+      //   error.httpStatusCode = 400
+      //   res.send(error)
+      // }
+  
+      let newObjeto = {
+        id,
+        name,
+        price: +price,
+        discount: +discount,
+        category,
+        description,
+        image: file ? file.filename : "default-image.png",
+        
+      };
+    
+      let newArchivo = [...archivoJson, newObjeto];
+      setJson(newArchivo, "productsDataBase");
+      res.redirect("/products");
   },
 
   // Update - Form to edit
@@ -55,9 +64,10 @@ const controller = {
   },
   // Update - Method to update
   update: (req, res) => {
+    const file = req.file
     const { id } = req.params;
     const products = getJson("productsDataBase");
-    const { name, price, discount, category, description, image } = req.body;
+    const { name, price, discount, category, description, image} = req.body;
     const nuevoArray = products.map((product) => {
       if (product.id == id) {
         return {
@@ -67,7 +77,7 @@ const controller = {
           discount: +discount,
           category,
           description: description.trim(),
-          image: image ? image : product.image,
+          image: image ? image : file.filename
         };
       }
       return product;
