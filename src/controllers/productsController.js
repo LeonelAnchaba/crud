@@ -67,7 +67,7 @@ const controller = {
     const file = req.file
     const { id } = req.params;
     const products = getJson("productsDataBase");
-    const { name, price, discount, category, description, image} = req.body;
+    const { name, price, discount, category, description} = req.body;
     const nuevoArray = products.map((product) => {
       if (product.id == id) {
         return {
@@ -77,8 +77,7 @@ const controller = {
           discount: +discount,
           category,
           description: description.trim(),
-          image: file ? file.filename : "default-image.png",
-          //me falta una vuelta de tuerca por si el usuario no selecciona una nueva imagen. 
+          image: file ? file.filename : product.image,
         };
       }
       return product;
@@ -97,11 +96,6 @@ const controller = {
 
     setJson(productosRestantes, "productsDataBase");
     res.redirect("/products");
-
-    // let productsModify = getJson("productsDataBase").filter(product => product.id !== +req.params.id)
-    // storeProducts(productsModify)
-    // return res.redirect("/products")
-    // res.send("Producto borrado correctamente")
   },
 };
 
