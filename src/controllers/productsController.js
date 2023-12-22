@@ -1,4 +1,5 @@
 const { setJson, getJson } = require("../utility/jsonMethod");
+const fs = require("fs")
 
 const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
@@ -91,9 +92,19 @@ const controller = {
   destroy: (req, res) => {
 	const {id}= req.params;
     const archivoJson = getJson("productsDataBase");
+    const product = archivoJson.find(producto => producto.id == id);
+
+    //con fs vamos a borrar la imagen antes de borrar el articulo, para no perder la referencia
+  
 
     const productosRestantes = archivoJson.filter(product => product.id != id);
-
+    // product.images.forEach(imagen => {
+    //   fs.unlink(`../../public/images/products/${imagen}`)
+    // })
+    fs.unlink(`./public/images/products/${product.image}`, (err) => {
+      if(err) throw err
+      console.log("Archivo borrado")
+    })
     setJson(productosRestantes, "productsDataBase");
     res.redirect("/products");
   },
