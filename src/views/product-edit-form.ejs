@@ -31,7 +31,7 @@
 					<div class="col-12 col-md-6">
 						<label for="category" class="form-label">Categoría:</label>
 						<select name="category" id="category" class="form-input">
-							<option value="" <%= product.category == "" ? "selected" : null %>>Elegí</option>
+							<!-- <option value="" <%= product.category == "" ? "selected" : null %>>Elegí</option> -->
 							<option value="in-sale" <%= product.category == "in-sale" ? "selected" : null %>>En oferta</option>
 							<option value="visited" <%= product.category == "visited" ? "selected" : null %>>Últimos agregados</option>
 						</select>

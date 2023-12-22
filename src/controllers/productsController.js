@@ -77,11 +77,13 @@ const controller = {
           discount: +discount,
           category,
           description: description.trim(),
-          image: image ? image : file.filename
+          image: file ? file.filename : "default-image.png",
+          //me falta una vuelta de tuerca por si el usuario no selecciona una nueva imagen. 
         };
       }
       return product;
     });
+  
     setJson(nuevoArray, "productsDataBase");
     res.redirect(`/products/${id}`);
   },

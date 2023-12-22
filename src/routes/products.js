@@ -13,6 +13,7 @@ const storage = multer.diskStorage({
     }
 })
 
+//Inicializamos el multer guardandolo en una variable
 const uploadFile = multer({ storage})
 
 // ************ Controller Require ************
