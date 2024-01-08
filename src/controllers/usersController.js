@@ -23,7 +23,7 @@ const usersController = {
                   surname,
                   email,
                   password, 
-                  image: file ? file.filename : "default-image.png",
+                  image: file ? file.filename : "default-avatar-profile.jpg",
                  
                 };
              
