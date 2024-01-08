@@ -11,6 +11,7 @@ const usersController = {
         const resultValidation = validationResult(req)
         
         if (resultValidation.isEmpty()){
+            const file = req.file
             const archivoJson = getJson("usersDataBase");
            
         
@@ -21,7 +22,8 @@ const usersController = {
                   name,
                   surname,
                   email,
-                  password
+                  password, 
+                  image: file ? file.filename : "default-image.png",
                  
                 };
              

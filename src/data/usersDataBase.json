@@ -28,5 +28,19 @@
         "surname": "Rodriguez",
         "email": "PauR@gmail.com",
         "password": "12345678"
+    },
+    {
+        "name": "Esteban Leonel",
+        "surname": "Anchaba",
+        "email": "leonelanchaba@gmail.com",
+        "password": "ghjfgjfghjgchjfghj",
+        "image": "1704688441756_img_.jpg"
+    },
+    {
+        "name": "Esteban Leonel",
+        "surname": "Anchaba",
+        "email": "leonelanchaba@gmail.com",
+        "password": "12334536467",
+        "image": "default-image.png"
     }
 ]
