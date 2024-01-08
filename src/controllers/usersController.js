@@ -8,9 +8,9 @@ const usersController = {
         
     },
     register:  (req, res) => {
-        const errors = validationResult(req)
+        const resultValidation = validationResult(req)
         
-        if (errors.isEmpty()){
+        if (resultValidation.isEmpty()){
             const archivoJson = getJson("usersDataBase");
            
         
@@ -29,7 +29,13 @@ const usersController = {
                 setJson(newArchivo, "usersDataBase");
                 res.redirect("/");
         } else {
-            res.send(errors)
+            res.render('register', {
+                 
+                errors: resultValidation.mapped(), 
+                oldData: req.body,
+                title:"Error"
+            });
+          
         }
         
         

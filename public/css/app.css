@@ -407,6 +407,10 @@ textarea.form-input {
   padding: 15px;
 }
 
+.is-invalid {
+  border:red 1px solid
+}
+
 
 
 /*====== Media-Queries ======*/
