@@ -2,88 +2,90 @@
 <html lang="es">
 <!-- Include Head -->
 <%- include('partials/head', {title}) %>
-<body>
-	<!-- Header -->
-	<%- include('partials/headerNavbar') %>
-	<!-- /Header -->
 
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title">Registrate</h2>
-			</div>
-		</div>
-		<div class="col-12">
-			<form action="/users/register" method="post" enctype="multipart/form-data">
-				<div class="row product-detail">
-					<div class="col-12 col-md-6">
-						<label for="name" class="form-label">Nombre :</label>
-						<input type="text" id="name" 
-                        name="name" 
-                        class="form-input <%= locals.errors && errors.name ? "is-invalid" : null %>"
-                        value="<%= locals.oldData ? oldData.name : null %>">
-                        <% if (locals.errors && errors.name) { %>
-                                
-                                <div style="color:red ">
-                                    <%= errors.name.msg %>
-                                </div>
-                            <% } %>
-					</div>
-					<div class="col-12 col-md-6">
-						<label for="surname" class="form-label">Apellido :</label>
-						<input type="text" id="surname" name="surname" 
-                        class="form-input  <%= locals.errors && errors.surname ? "is-invalid" : null %>"
-                        value="<%= locals.oldData ? oldData.surname : null %>">
-                        <% if (locals.errors && errors.surname) { %>
-                            <div style="color:red ">
-                                <%= errors.surname.msg %>
-                            </div>
-                        <% } %>
-					</div>
-					<div class="col-12 col-md-6">
-						<label for="email" class="form-label">Correo electrónico :</label>
-						<input type="email" id="email" name="email" 
-                        class="form-input <%= locals.errors && errors.email ? "is-invalid" : null %>"
-                        value="<%= locals.oldData ? oldData.email : null %>">
-                        <% if (locals.errors && errors.email) { %>
-                            <div style="color:red ">
-                                <%= errors.email.msg %>
-                            </div>
-                        <% } %>
-					</div>
-					<div class="col-12 col-md-6">
-						<label for="password" class="form-label">Contraseña :</label>
-						<input type="password" id="password" name="password" 
-                        class="form-input <%= locals.errors && errors.password ? "is-invalid" : null %>">
-                        
-                        <% if (locals.errors && errors.password) { %>
-                            <div style="color:red ">
-                                <%= errors.password.msg %>
-                            </div>
-                        <% } %>
-					</div>
-                    <div class="col-12">
-						<label for="image" class="form-label">Imagen:</label>
-						<input type="file" name="image" id="image" accept="image/*">
-                        <% if (locals.errors && errors.image) { %>
-                            <div style="color:red ">
-                                <%= errors.image.msg %>
-                            </div>
-                        <% } %>
-					</div>
-				
+	<body>
+		<!-- Header -->
+		<%- include('partials/headerNavbar') %>
+			<!-- /Header -->
+
+			<div class="container products-wrapper">
+				<div class="row">
 					<div class="col-12">
-						<button type="submit" class="buy-now-button">Registrarse</button>
+						<h2 class="products-title">Registrate</h2>
 					</div>
 				</div>
-			</form>
-		</div>
+				<div class="col-12">
+					<form action="/users/register" method="post" enctype="multipart/form-data">
+						<div class="row product-detail">
+							<div class="col-12 col-md-6">
+								<label for="name" class="form-label">Nombre :</label>
+								<input type="text" id="name" name="name"
+									class="form-input <%= locals.errors && errors.name ? " is-invalid" : null %>"
+								value="<%= locals.oldData ? oldData.name : null %>">
+									<% if (locals.errors && errors.name) { %>
 
-	</div>
-	<!-- /todos los productos -->
+										<div style="color:red ">
+											<%= errors.name.msg %>
+										</div>
+										<% } %>
+							</div>
+							<div class="col-12 col-md-6">
+								<label for="surname" class="form-label">Apellido :</label>
+								<input type="text" id="surname" name="surname"
+									class="form-input  <%= locals.errors && errors.surname ? " is-invalid" : null %>"
+								value="<%= locals.oldData ? oldData.surname : null %>">
+									<% if (locals.errors && errors.surname) { %>
+										<div style="color:red ">
+											<%= errors.surname.msg %>
+										</div>
+										<% } %>
+							</div>
+							<div class="col-12 col-md-6">
+								<label for="email" class="form-label">Correo electrónico :</label>
+								<input type="email" id="email" name="email"
+									class="form-input <%= locals.errors && errors.email ? " is-invalid" : null %>"
+								value="<%= locals.oldData ? oldData.email : null %>">
+									<% if (locals.errors && errors.email) { %>
+										<div style="color:red ">
+											<%= errors.email.msg %>
+										</div>
+										<% } %>
+							</div>
+							<div class="col-12 col-md-6">
+								<label for="password" class="form-label">Contraseña :</label>
+								<input type="password" id="password" name="password"
+									class="form-input <%= locals.errors && errors.password ? " is-invalid" : null %>">
 
-	<!-- footer -->
-	<%- include('partials/footer') %>
-	<!-- /footer -->
-</body>	
+								<% if (locals.errors && errors.password) { %>
+									<div style="color:red ">
+										<%= errors.password.msg %>
+									</div>
+									<% } %>
+							</div>
+							<div class="col-12">
+								<label for="image" class="form-label">Imagen: <%= locals.oldFile ? oldFile.originalname
+										: null %></label>
+								<input type="file" name="image" id="image" accept="image/*" value="holaaaaaaaaa">
+								<% if (locals.errors && errors.image) { %>
+									<div style="color:red ">
+										<%= errors.image.msg %>
+									</div>
+									<% } %>
+							</div>
+
+							<div class="col-12">
+								<button type="submit" class="buy-now-button">Registrarse</button>
+							</div>
+						</div>
+					</form>
+				</div>
+
+			</div>
+			<!-- /todos los productos -->
+
+			<!-- footer -->
+			<%- include('partials/footer') %>
+				<!-- /footer -->
+	</body>
+
 </html>
