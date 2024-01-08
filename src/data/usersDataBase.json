@@ -1,0 +1,46 @@
+[
+    {
+        "name": "Leonel",
+        "surname": "Anchaba",
+        "email": "leonelanchaba@gmail.com",
+        "password": "contraseña"
+    },
+    {
+        "name": "Francisco",
+        "surname": "Diaz",
+        "email": "frankpo@gmail.com",
+        "password": "goku123"
+    },
+    {
+        "name": "Julieta",
+        "surname": "Gomez",
+        "email": "Julipop@gmail.com",
+        "password": "holi"
+    },
+    {
+        "name": "Marcos",
+        "surname": "Diosque",
+        "email": "diosquehagoahora@gmail.com",
+        "password": "yisus"
+    },
+    {
+        "name": "Paula",
+        "surname": "Rodriguez",
+        "email": "PauR@gmail.com",
+        "password": "12345678"
+    },
+    {
+        "name": "Esteban Leonel",
+        "surname": "Anchaba",
+        "email": "leonelanchaba@gmail.com",
+        "password": "ghjfgjfghjgchjfghj",
+        "image": "1704688441756_img_.jpg"
+    },
+    {
+        "name": "Esteban Leonel",
+        "surname": "Anchaba",
+        "email": "leonelanchaba@gmail.com",
+        "password": "12334536467",
+        "image": "default-image.png"
+    }
+]
